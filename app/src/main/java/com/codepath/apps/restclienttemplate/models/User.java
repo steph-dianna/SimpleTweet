@@ -10,6 +10,7 @@ public class User {
 
     public String name;
     public String screenName;
+
     public String profileImageUrl;
 
     public User(){}
@@ -18,8 +19,9 @@ public class User {
     }
 
     public String getScreenName() {
-        return screenName;
+        return "@" + screenName;
     }
+
 
     public String getProfileImageUrl() {
         return profileImageUrl;
