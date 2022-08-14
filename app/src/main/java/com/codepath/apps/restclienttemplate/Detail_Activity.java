@@ -25,6 +25,12 @@ public class Detail_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_twitter_1);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        getSupportActionBar().setTitle(" ");
+
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -42,6 +48,15 @@ public class Detail_Activity extends AppCompatActivity {
 
 
         Glide.with(this).load(tweet.user.profileImageUrl).transform(new RoundedCorners(100)).into(imageView);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_image,menu);
+
+
+        return true;
+
     }
 
 }

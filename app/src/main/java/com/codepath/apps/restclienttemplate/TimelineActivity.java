@@ -50,6 +50,8 @@ public class TimelineActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.drawable.ic_twitter_1);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
+        getSupportActionBar().setTitle(" ");
+
         client = TwitterApp.getRestClient(this);
 
         swipeContainer = findViewById(R.id.swipeContainer);
@@ -158,7 +160,6 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.menu_image,menu);
-
 
         return true;
 

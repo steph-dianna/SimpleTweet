@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="Blue">#1DA1F2</color>
+    <color name="Black">#14171A</color>
+    <color name="DarkGray">#657786</color>
+    <color name="LightGray">#AAB8C2</color>
+    <color name="ExtraLightGray">#E1E8ED</color>
+    <color name="Material_500">#0c85c7</color>
+
+
+</resources>
