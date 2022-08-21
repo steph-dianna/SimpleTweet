@@ -1,10 +1,15 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,25 +24,41 @@ public class Detail_Activity extends AppCompatActivity {
     public TextView Description;
     public TextView userName;
     public ImageView imageView;
+    public TextView heureDetail;
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent = new Intent(Detail_Activity.this,TimelineActivity.class);
+        startActivity(intent);
+        return super.onOptionsItemSelected(item);
+
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.ic_twitter_1);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-
-        getSupportActionBar().setTitle(" ");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
 
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_twitter_1);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        getSupportActionBar().setTitle("Tweet ");
+
         Nom = findViewById(R.id.Nom);
         userName = findViewById(R.id.userName);
         Description = findViewById(R.id.Description);
+        heureDetail = findViewById(R.id.heureDetail);
 
         imageView = findViewById(R.id.imageView);
         Tweet tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweets"));
@@ -45,18 +66,13 @@ public class Detail_Activity extends AppCompatActivity {
         Description.setText(tweet.getBody());
         userName.setText(tweet.getUser().getScreenName());
         Nom.setText(tweet.getUser().getName());
+        heureDetail.setText(tweet.getTimeStamp(tweet.createdAt));
 
 
-        Glide.with(this).load(tweet.user.profileImageUrl).transform(new RoundedCorners(100)).into(imageView);
+        Glide.with(this).load(tweet.user.profileImageUrl)
+                .transform(new RoundedCorners(100)).into(imageView);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(android.view.Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_image,menu);
 
-
-        return true;
-
-    }
 
 }

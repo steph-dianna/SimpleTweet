@@ -89,10 +89,14 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView ivProfileImage;
+        ImageView imVideo;
         TextView tvBody;
         TextView Nom;
         TextView tvScreenName;
         TextView heure;
+//        public TextView textView2;
+//        public TextView textView3;
+//        public TextView textView4;
 
         public ViewHolder(@NonNull View itemView, final OnItemClickListener clickListener){
             super(itemView);
@@ -100,7 +104,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody = itemView.findViewById(R.id.tvBody);
             Nom = itemView.findViewById(R.id.Nom);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
+            imVideo = itemView.findViewById(R.id.imVideo);
             heure = itemView.findViewById(R.id.heure);
+//            textView2 = itemView.findViewById(R.id.textView2);
+//            textView3 = itemView.findViewById(R.id.textView3);
+//            textView4 = itemView.findViewById(R.id.textView4);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -117,7 +125,15 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             Nom.setText(tweet.user.getName());
             tvScreenName.setText(tweet.user.getScreenName());
             heure.setText(tweet.getFormattedTimestamp(tweet.createdAt));
-            Glide.with(context).load(tweet.user.profileImageUrl).transform(new RoundedCorners(100)).into(ivProfileImage);
+            Glide.with(context).load(tweet.user.profileImageUrl)
+                    .transform(new RoundedCorners(100)).into(ivProfileImage);
+
+            if(!tweet.entities.media_url.isEmpty()){
+                imVideo.setVisibility(View.VISIBLE);
+                Glide.with(context).load(tweet.entities.media_url)
+                        .transform(new RoundedCorners(40)).into(imVideo);
+            }
+
         }
     }
 }

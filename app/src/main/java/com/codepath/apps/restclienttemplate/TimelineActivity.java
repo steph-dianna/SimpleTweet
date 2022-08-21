@@ -36,7 +36,7 @@ public class TimelineActivity extends AppCompatActivity {
     TweetsAdapter adapter;
     SwipeRefreshLayout swipeContainer;
     EndlessRecyclerViewScrollListener scrollListener;
-    private Object Menu;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class TimelineActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.ic_twitter_1);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+
 
         getSupportActionBar().setTitle(" ");
 
@@ -158,7 +159,7 @@ public class TimelineActivity extends AppCompatActivity {
         });
     }
     @Override
-    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_image,menu);
 
         return true;
