@@ -1,3 +1,5 @@
+![gift](https://user-images.githubusercontent.com/108767600/185824668-3a454b2f-c105-4124-8a8b-6824b6624803.gif)
+![gift](https://user-images.githubusercontent.com/108767600/185824700-c0e1e24f-13ad-4537-aced-3027bcb0f139.gif)
 # Project 2 - *Simple Tweet*
 
 **Name of your app** is an android app that allows a user to view his Twitter timeline. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
