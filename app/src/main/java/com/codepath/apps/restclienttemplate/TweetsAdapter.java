@@ -1,6 +1,10 @@
 package com.codepath.apps.restclienttemplate;
 
+import static com.codepath.apps.restclienttemplate.TimelineActivity.utilisateur;
+
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -26,6 +34,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public TweetsAdapter(Context context,  List<Tweet> tweets){
         this.context = context;
         this.tweets = tweets;
+
     }
 
     public interface OnItemClickListener {
@@ -94,10 +103,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView Nom;
         TextView tvScreenName;
         TextView heure;
-//        public TextView textView2;
-//        public TextView textView3;
-//        public TextView textView4;
-
+        TextView textView2;
+//
         public ViewHolder(@NonNull View itemView, final OnItemClickListener clickListener){
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfile);
@@ -106,9 +113,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             imVideo = itemView.findViewById(R.id.imVideo);
             heure = itemView.findViewById(R.id.heure);
-//            textView2 = itemView.findViewById(R.id.textView2);
-//            textView3 = itemView.findViewById(R.id.textView3);
-//            textView4 = itemView.findViewById(R.id.textView4);
+            textView2 = itemView.findViewById(R.id.textView2);
+//
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -125,6 +131,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             Nom.setText(tweet.user.getName());
             tvScreenName.setText(tweet.user.getScreenName());
             heure.setText(tweet.getFormattedTimestamp(tweet.createdAt));
+
             Glide.with(context).load(tweet.user.profileImageUrl)
                     .transform(new RoundedCorners(100)).into(ivProfileImage);
 
@@ -134,6 +141,26 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                         .transform(new RoundedCorners(40)).into(imVideo);
             }
 
+            textView2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showEditDialog(Parcels.wrap(tweet));
+                }
+            });
+
         }
+        private void showEditDialog(Parcelable tweet) {
+            FragmentManager fm = ((FragmentActivity)context).getSupportFragmentManager();
+            ReplyFragment editNameDialogFragment = ReplyFragment.newInstance("Some Title");
+
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("tweets",tweet);
+            bundle.putParcelable("profile",Parcels.wrap(utilisateur));
+
+            editNameDialogFragment.setArguments(bundle);
+            editNameDialogFragment.show(fm, "fragment_reply");
+        }
+
+
     }
 }
