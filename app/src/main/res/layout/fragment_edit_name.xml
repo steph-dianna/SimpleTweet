@@ -48,17 +48,17 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/compter"
         android:layout_width="match_parent"
-        android:layout_height="373dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/imagefr"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="29dp"
         app:counterEnabled="true"
         app:counterMaxLength="140">
 
 
         <EditText
             android:id="@+id/etComposeFrag"
-            android:layout_width="398dp"
-            android:layout_height="268dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="5dp"
