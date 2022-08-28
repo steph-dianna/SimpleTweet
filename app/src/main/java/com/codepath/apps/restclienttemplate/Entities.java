@@ -1,5 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.room.ColumnInfo;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,7 +12,10 @@ public class Entities {
 
 public Entities() {}
 
+    @ColumnInfo
     public String media_url;
+
+    @ColumnInfo
     public String type;
 
     public static com.codepath.apps.restclienttemplate.Entities fromJson(JSONObject jsonObject) throws JSONException {

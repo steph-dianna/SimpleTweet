@@ -18,7 +18,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="3dp"
         tools:context=".Detail_Activity">
 
         <ImageView
@@ -149,8 +149,8 @@
             android:id="@+id/divider11"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="14dp"
             android:layout_below="@+id/Description"
+            android:layout_marginTop="14dp"
             android:background="?android:attr/listDivider" />
 
         <TextView
@@ -177,8 +177,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="What's happening"
@@ -195,7 +195,7 @@
             android:layout_marginTop="9dp"
             android:backgroundTint="#1DA1F2"
             android:elevation="5dp"
-            android:text="@string/reply"
+            android:text="Tweet"
             tools:ignore="NotSibling" />
 
     </RelativeLayout>

@@ -135,11 +135,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             Glide.with(context).load(tweet.user.profileImageUrl)
                     .transform(new RoundedCorners(100)).into(ivProfileImage);
 
-            if(!tweet.entities.media_url.isEmpty()){
-                imVideo.setVisibility(View.VISIBLE);
-                Glide.with(context).load(tweet.entities.media_url)
-                        .transform(new RoundedCorners(40)).into(imVideo);
-            }
+//            if(!tweet.entities.media_url.isEmpty()){
+//                imVideo.setVisibility(View.VISIBLE);
+//                Glide.with(context).load(tweet.entities.media_url)
+//                        .transform(new RoundedCorners(40)).into(imVideo);
+//            }
 
             textView2.setOnClickListener(new View.OnClickListener() {
                 @Override

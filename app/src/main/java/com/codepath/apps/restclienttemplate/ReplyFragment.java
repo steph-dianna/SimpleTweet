@@ -16,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.apps.restclienttemplate.models.User;
@@ -79,10 +81,11 @@ public class ReplyFragment extends DialogFragment {
         Nom2 = view.findViewById(R.id.Nom2);
         userName2 = view.findViewById(R.id.userName2);
         btnReply = view.findViewById(R.id.btnReply);
+        close2 = view.findViewById(R.id.close2);
 
+        Nom2.setText(utilisateur.getName());
+        userName2.setText(utilisateur.getScreenName());
 
-//        Glide.with(getContext()).load(utilisateur.profileImageUrl)
-//                .transform(new RoundedCorners(100)).into(imagefr2);
 
         // Fetch arguments from bundle and set title
 
@@ -105,7 +108,7 @@ public class ReplyFragment extends DialogFragment {
             }
         });
 
-        compter2.setHint("Reply to" + tweet.user.getScreenName());
+
 
         btnReply.setOnClickListener(new View.OnClickListener() {
             @Override

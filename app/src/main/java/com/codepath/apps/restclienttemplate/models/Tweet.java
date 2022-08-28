@@ -21,7 +21,6 @@ import java.util.List;
 
 @Parcel
 @Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId"))
-
 public class Tweet {
 
     @ColumnInfo
@@ -39,7 +38,7 @@ public class Tweet {
     public Long userId;
 
     @Ignore
-    public static User user;
+    public User user;
 
     @Ignore
     public Entities entities;
@@ -77,8 +76,10 @@ public class Tweet {
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.id = jsonObject.getLong("id");
 
-        tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        User user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.user = user;
         tweet.userId = user.id;
+
         tweet.entities = Entities.fromJson(jsonObject.getJSONObject("entities"));
 
         return tweet;

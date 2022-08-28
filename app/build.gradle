@@ -63,8 +63,8 @@ dependencies {
 
     implementation "androidx.vectordrawable:vectordrawable:1.0.0" // VectorDrawableCompat
     implementation "androidx.vectordrawable:vectordrawable-animated:1.0.0" // AnimatedVectorDrawableCompat
+    //implementation "androidx.transition:transition:1.0.0"
+    //implementation "com.github.danylovolokh:video-player-manager:0.2.0"
 
-    implementation 'org.parceler:parceler-api:1.1.12'
-    annotationProcessor 'org.parceler:parceler:1.1.12'
 
 }
