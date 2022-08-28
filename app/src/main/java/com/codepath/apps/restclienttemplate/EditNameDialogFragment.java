@@ -82,6 +82,8 @@ public class EditNameDialogFragment extends DialogFragment {
         close = view.findViewById(R.id.close);
         btnTweet = view.findViewById(R.id.btnTweet);
         imagefr = view.findViewById(R.id.imagefr);
+        client = TwitterApp.getRestClient(getContext());
+
 
 
         // Fetch arguments from bundle and set title
@@ -130,21 +132,19 @@ public class EditNameDialogFragment extends DialogFragment {
                     Toast.makeText(context, "Sorry, your tweet is too long", Toast.LENGTH_LONG).show();
                     return;
                 }
+
                 client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Headers headers, JSON json) {
-                        Log.i(TAG, "on Succes to publish tweet");
+                        Log.i(TAG,"onSuccess to publish tweet");
                         try {
-                            Tweet tweet = Tweet.fromJson(json.jsonObject);
-                            Log.i(TAG, "publish tweet says:" + tweet.body);
-                            Intent intent = new Intent();
-                            intent.putExtra("tweet", Parcels.wrap(tweet));
+                            Tweet tweet=Tweet.fromJson(json.jsonObject);
+                            Log.i(TAG," published tweet says : " + tweet);
 
-                            EditListTweets listTweets = (EditListTweets) getTargetFragment();
-                            listTweets.onFinishEditDialog(tweet);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
                     }
 
                     @Override
