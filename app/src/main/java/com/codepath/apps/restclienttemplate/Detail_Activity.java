@@ -35,11 +35,23 @@ public class Detail_Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent intent = new Intent(Detail_Activity.this,TimelineActivity.class);
-        startActivity(intent);
-        return super.onOptionsItemSelected(item);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(intent,0);
+        return true;
 
 
     }
+
+
+
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        int back = R.id.homeAsUp;
+//        Intent intent = new Intent(DetailActivity.this,TimelineActivity.class);
+//        intent.putExtra("back", Parcels.wrap(back));
+//        DetailActivity.this.startActivity(intent);
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
     @Override
@@ -53,11 +65,16 @@ public class Detail_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow2);
+
+
         getSupportActionBar().setLogo(R.drawable.ic_twitter_1);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
 
         getSupportActionBar().setTitle("Tweet ");
 

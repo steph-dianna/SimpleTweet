@@ -1,7 +1,8 @@
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="15dp"
-    android:background= "#1DA1F2"/>
+    android:background="#1DA1F2"
+    app:titleTextColor="#E1E8ED" />
 
