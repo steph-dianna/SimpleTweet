@@ -1,10 +1,13 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.service.autofill.SaveInfo;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +81,7 @@ public class EditNameDialogFragment extends DialogFragment {
         userName = view.findViewById(R.id.userName);
         close = view.findViewById(R.id.close);
         btnTweet = view.findViewById(R.id.btnTweet);
+        imagefr = view.findViewById(R.id.imagefr);
 
 
         // Fetch arguments from bundle and set title
@@ -93,8 +97,10 @@ public class EditNameDialogFragment extends DialogFragment {
 
         Bundle bundle = getArguments();
         User utilisateur = Parcels.unwrap(bundle.getParcelable("profile"));
-//        Glide.with(getContext()).load(utilisateur.profileImageUrl)
-//                .transform(new RoundedCorners(100)).into(imagefr);
+        Nom.setText(utilisateur.getName());
+        userName.setText(utilisateur.getScreenName());
+        Glide.with(getContext()).load(utilisateur.getProfileImageUrl()).into(imagefr);
+
 
         //draft
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -108,7 +114,7 @@ public class EditNameDialogFragment extends DialogFragment {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
+                open();
             }
         });
 
@@ -153,5 +159,31 @@ public class EditNameDialogFragment extends DialogFragment {
     }
     public interface EditListTweets{
         void onFinishEditDialog(Tweet tweet);
+    }
+    public void open(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Save Draft");
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                Save();
+            }
+        });
+        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dismiss();
+
+            }
+        });
+       AlertDialog dialog = builder.create();
+       dialog.show();
+    }
+    public void Save(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("username",mEditText.getText().toString());
+        editor.commit();
+        dismiss();
     }
 }

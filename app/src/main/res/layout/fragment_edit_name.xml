@@ -1,40 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".EditNameDialogFragment">
-
-    <ImageView
-        android:id="@+id/imagefr"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="340dp"
-        android:layout_marginTop="7dp"
-        tools:srcCompat="@tools:sample/avatars" />
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/Nom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/imagefr"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="60dp"
-        android:textStyle="bold"
-        android:text="lalll"/>
-
+        android:layout_alignBottom="@+id/imagefr"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="7dp"
+        android:layout_toStartOf="@+id/imagefr"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_alignBottom="@+id/imagefr"
         android:layout_alignEnd="@+id/imagefr"
-        android:text="lalal" />
+        android:layout_marginEnd="78dp"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/close"
@@ -49,38 +39,49 @@
         android:id="@+id/compter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imagefr"
-        android:layout_marginTop="29dp"
+        android:layout_below="@id/imagefr"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
         app:counterEnabled="true"
         app:counterMaxLength="140">
-
 
         <EditText
             android:id="@+id/etComposeFrag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_below="@id/imagefr"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="0dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="What's happening"
+            android:hint="What's happening?"
             android:inputType="textMultiLine"
             android:minLines="5" />
+
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnTweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/compter"
-        android:layout_marginLeft="280dp"
-        android:layout_marginTop="9dp"
-        android:elevation="5dp"
-        android:backgroundTint="#1DA1F2"
-        android:text="@string/tweet"
-        tools:ignore="NotSibling" />
+        android:layout_below="@id/compter"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="51dp"
+        android:text="TWEET" />
+
+    <ImageView
+        android:id="@+id/imagefr"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="44dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
 
 </RelativeLayout>
+

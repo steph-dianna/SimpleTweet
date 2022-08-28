@@ -1,12 +1,17 @@
 package com.codepath.apps.restclienttemplate;
 
+import static com.codepath.apps.restclienttemplate.TimelineActivity.utilisateur;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +30,7 @@ public class Detail_Activity extends AppCompatActivity {
     public TextView userName;
     public ImageView imageView;
     public TextView heureDetail;
+    public TextView textView6;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -59,9 +65,19 @@ public class Detail_Activity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         Description = findViewById(R.id.Description);
         heureDetail = findViewById(R.id.heureDetail);
+        textView6 = findViewById(R.id.textView6);
+
 
         imageView = findViewById(R.id.imageView);
         Tweet tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweets"));
+
+        textView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEditDialog(Parcels.wrap(tweet));
+            }
+        });
+
 
         Description.setText(tweet.getBody());
         userName.setText(tweet.getUser().getScreenName());
@@ -73,6 +89,17 @@ public class Detail_Activity extends AppCompatActivity {
                 .transform(new RoundedCorners(100)).into(imageView);
     }
 
+    private void showEditDialog(Parcelable tweet) {
+        FragmentManager fm = getSupportFragmentManager();
+        ReplyFragment editNameDialogFragment = ReplyFragment.newInstance("Some Title");
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("tweets",tweet);
+        bundle.putParcelable("profile",Parcels.wrap(utilisateur));
+
+        editNameDialogFragment.setArguments(bundle);
+        editNameDialogFragment.show(fm, "fragment_reply");
+    }
 
 
 }
