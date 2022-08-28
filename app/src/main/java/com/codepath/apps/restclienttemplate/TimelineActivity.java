@@ -232,7 +232,7 @@ public class TimelineActivity extends AppCompatActivity implements EditNameDialo
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       // getMenuInflater().inflate(R.menu.menu_image,menu);
+        getMenuInflater().inflate(R.menu.menu_image,menu);
        // getMenuInflater().inflate(R.menu.menu_main, menu);
 
         return true;
